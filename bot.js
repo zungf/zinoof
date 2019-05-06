@@ -68,22 +68,7 @@ if (message.content.startsWith(prefix + 'setavatar')) {
 }
 });
 
-client.on('message', message => {  
-let CH = client.guilds.get("501728913710645260").emojis.find(r => r.name === "check");
-let CR = client.guilds.get("501728913710645260").emojis.find(r => r.name === "cross");
-    if (message.author.bot) return;
-if (message.content.startsWith(prefix + 'clear')) { //Codes
-    if(!message.channel.guild) return message.reply('**${CR}| This Command For Servers Only!**'); 
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(`**${CR} | You don't have Premissions!**`);
-        if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(`**${CR} | I don't have Permission!**`);
- let args = message.content.split(" ").slice(1)
-    let messagecount = parseInt(args);
-    if (args > 100) return message.reply(`**${CR} | The number can't be more than **100** .**`).then(messages => messages.delete(5000))
-    if(!messagecount) args = '100';
-    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
-    message.channel.send(`**${CH} | Done , Deleted \`${args}\` messages.**`).then(messages => messages.delete(5000));
-  }
-  });
+
 
 
 
